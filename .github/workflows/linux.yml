@@ -179,9 +179,9 @@ jobs:
       env:
         ARGS: ${{ matrix.plan.args }}
 
-    - name: Build all hledger modules optimised and warning free, run unit/doc/bench tests
+    - name: Build all hledger modules warning free, optimised and minimised, run unit/doc/bench tests
       run: |
-        stack $ARGS install --test --bench --force-dirty --ghc-options=-fforce-recomp --ghc-options=-Werror --no-terminal
+        stack $ARGS install --test --bench --force-dirty --ghc-options=-fforce-recomp --ghc-options=-Werror --ghc-options=-split-sections --no-terminal
         # --pedantic --no-run-benchmarks
       env:
         ARGS: ${{ matrix.plan.args }}
